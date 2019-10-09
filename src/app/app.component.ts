@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { QUESTIONS } from '../assets/questions';
+// import { PercentagePipe } from '@angular/p'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,26 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'driving-test';
+  questions: any[] = QUESTIONS;
+    selected: any;
+    totalCount: number = this.questions.length;
+    doneCount: number = 0;
+    rightCount: number = 0;
+
+    constructor() {}
+
+    ngOnInit() {
+    }
+
+    select(item, question) {
+        this.doneCount++;
+        if (question.right === item) {
+            this.rightCount++;
+        }
+        this.selected = item;
+    };
+
+    isActive(item) {
+        return this.selected === item;
+    };
 }
