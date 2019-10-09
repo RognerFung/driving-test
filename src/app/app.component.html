@@ -1,10 +1,10 @@
-<div class="stats m-2 bg-light">
-  <p>Total Questions: {{ totalCount }}</p>
-  <p>Questions Done: {{ doneCount }}</p>
-  <p>Right Answers: {{ rightCount }}</p>
-  <p *ngIf="doneCount != 0">Score: {{ rightCount / doneCount | percent: '0.0-2'}}</p>
-</div>
-<div class="container mt-2">
+<nav class="navbar fixed-top bg-light">
+  <label>Total: {{ totalCount }}</label>
+  <label>Done: {{ doneCount }}</label>
+  <label>Right: {{ rightCount }}</label>
+  <label>Score: {{ doneCount === 0 ? 0 : rightCount / doneCount | percent: '0.0-2'}}</label>
+</nav>
+<div class="container mt-5">
   <div *ngFor="let question of questions" class="row">
       <div class="col-9">
           <h3>{{ questions.indexOf(question) + 1 }}. {{ question.question }}</h3>
